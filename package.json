@@ -4,16 +4,22 @@
   "author": {
     "name": "Christoffer Jahren"
   },
-  "description": "CSS prefixer plugin for Gulp",
-  "maintainers": [{
-    "name": "j4hr3n",
+  "description": "CSS prefixer plugin for GulpJS",
+  "keywords": [
+    "gulpplugin",
+    "cssprefixer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j4hr3n/gulp-prefix-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/j4hr3n/gulp-prefix-css/issues",
     "email": "christoffer@jahren.it"
-  }],
+  },
+  "license": "MIT",
   "devDependencies": {
-    "istanbul": "latest",
-    "mocha": "latest",
-    "mocha-lcov-reporter": "latest",
-    "should": "latest"
+    "gulp-util": "^3.0.7"
   },
   "dependencies": {
     "event-stream": "latest",
