@@ -1,5 +1,5 @@
 # gulp-prefix-css
-
+[![NPM version][![Dependency Status][depstat-image]][depstat-url]
 > Gulp plugin to prefix your CSS selectors
 
 ## Usage
@@ -19,3 +19,6 @@ gulp.task('prefix-css', function(){
     .pipe(gulp.dest('./dist'));
 });
 ```
+
+[depstat-img]: https://david-dm.org/j4hr3n/gulp-prefix-css.svg
+[depstat-url]: https://david-dm.org/j4hr3n/gulp-prefix-css
