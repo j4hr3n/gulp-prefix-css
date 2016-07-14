@@ -1,6 +1,6 @@
 {
   "name": "gulp-prefix-css",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Christoffer Jahren"
   },
@@ -19,12 +19,14 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
     "mocha": "^2.5.3",
     "should": "^9.0.2"
   },
   "dependencies": {
     "event-stream": "latest",
+    "gulp-bump": "^2.2.0",
     "gulp-util": "latest",
     "postcss": "latest"
   },
