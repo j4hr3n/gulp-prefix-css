@@ -1,14 +1,20 @@
 'use strict';
 
-const es = require('event-stream');
-const postcss = require('postcss');
-const scopeSelector;
-const scope;
+var es = require('event-stream');
+var gutil = require('gulp-util');
+var PluginError = gutil.PluginError;
+var postcss = require('postcss');
+var scopeSelector;
+var scope;
+
+const PLUGIN_NAME = 'gulp-prefix-css';
 
 
 scope = postcss(function(css) {
-	css.eachRule(function(rule) {
+	css.walkRules(function(rule) {
 		rule.selectors = rule.selectors.map(function(selector) {
+			console.log("Selector", selector);
+			console.log("ScopeSelector", scopeSelector);
 			if (selector.trim().toLowerCase() === 'body') {
 				return scopeSelector;
 			} else {
@@ -19,28 +25,30 @@ scope = postcss(function(css) {
 });
 
 
-module.exports = function(scopeSelectorOption) {
+module.exports = function cssPrefixer(scopeSelectorOption) {
 	scopeSelector = scopeSelectorOption;
 
+	if (!scopeSelector) {
+		throw new PluginError(PLUGIN_NAME, 'Missing a css prefix!');
+	}
+
 	return es.map(function(file, callback) {
-		var through,
-			wait;
-
+		if (file.isNull()) {
+			return cb(null, file);
+		}
+		if (file.isBuffer()) {
+			file.contents = new Buffer(scope.process(file.contents).css);
+		}
 		if (file.isStream()) {
-
-			through = es.through();
-			wait = es.wait(function(err, contents) {
+			var through = es.through();
+			var wait = es.wait(function(err, contents) {
 				through.write(scope.process(contents).css);
 				through.end();
 			});
 
 			file.contents.pipe(wait);
 			file.contents = through;
-
-		} else if (file.isBuffer()) {
-			file.contents = new Buffer(scope.process(file.contents).css);
 		}
-
 		callback(null, file);
-	});
+	})
 };

@@ -19,11 +19,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "mocha": "^2.5.3",
+    "should": "^9.0.2"
   },
   "dependencies": {
     "event-stream": "latest",
     "gulp-util": "latest",
     "postcss": "latest"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
