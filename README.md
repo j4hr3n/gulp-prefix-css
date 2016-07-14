@@ -1,5 +1,6 @@
 # gulp-prefix-css
-[![Dependency Status][depstat-image]][depstat-url]
+
+[![Dependency Status][depstat-img]][depstat-url]
 > Gulp plugin to prefix your CSS selectors
 
 ## Usage
