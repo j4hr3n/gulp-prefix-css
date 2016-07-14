@@ -13,8 +13,6 @@ const PLUGIN_NAME = 'gulp-prefix-css';
 scope = postcss(function(css) {
 	css.walkRules(function(rule) {
 		rule.selectors = rule.selectors.map(function(selector) {
-			console.log("Selector", selector);
-			console.log("ScopeSelector", scopeSelector);
 			if (selector.trim().toLowerCase() === 'body') {
 				return scopeSelector;
 			} else {
