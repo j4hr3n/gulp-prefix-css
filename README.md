@@ -7,7 +7,9 @@
 
 First things first, install as a dev-dependency
 
-`$ npm i --save-dev gulp-prefix-css`
+```shell
+$ npm i --save-dev gulp-prefix-css
+```
 
 then, in your `gulpfile.js` add something like this:
 
