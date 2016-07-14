@@ -11,7 +11,7 @@ First things first, install as a dev-dependency
 
 then, in your `gulpfile.js` add something like this:
 
-```
+```javascript
 var prefixCSS = require('gulp-prefix-css');
 
 gulp.task('prefix-css', function(){
