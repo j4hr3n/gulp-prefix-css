@@ -1,0 +1,28 @@
+{
+  "name": "gulp-prefix-css",
+  "version": "0.0.1",
+  "author": {
+    "name": "Christoffer Jahren"
+  },
+  "description": "CSS prefixer plugin for Gulp",
+  "maintainers": [{
+    "name": "j4hr3n",
+    "email": "christoffer@jahren.it"
+  }],
+  "scripts": {
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "istanbul test _mocha --report html -- test/latest.js --reporter spec"
+  },
+  "devDependencies": {
+    "coveralls": "latest",
+    "istanbul": "latest",
+    "mocha": "latest",
+    "mocha-lcov-reporter": "latest",
+    "should": "latest"
+  },
+  "dependencies": {
+    "event-stream": "latest",
+    "gulp-util": "latest",
+    "postcss": "latest"
+  },
+}
