@@ -1,35 +1,35 @@
 'use strict';
 
-var es = require('event-stream'),
-	postcss = require('postcss'),
-	scopeSelector,
-	scope;
+const es = require('event-stream');
+const postcss = require('postcss');
+const scopeSelector;
+const scope;
 
 
-scope = postcss(function (css) {
-    css.eachRule(function (rule) {
-		rule.selectors = rule.selectors.map(function (selector) {
+scope = postcss(function(css) {
+	css.eachRule(function(rule) {
+		rule.selectors = rule.selectors.map(function(selector) {
 			if (selector.trim().toLowerCase() === 'body') {
 				return scopeSelector;
 			} else {
 				return scopeSelector + ' ' + selector;
 			}
 		});
-    });
+	});
 });
 
 
-module.exports = function (scopeSelectorOption) {
+module.exports = function(scopeSelectorOption) {
 	scopeSelector = scopeSelectorOption;
 
-	return es.map(function (file, callback) {
+	return es.map(function(file, callback) {
 		var through,
 			wait;
 
 		if (file.isStream()) {
 
 			through = es.through();
-			wait = es.wait(function (err, contents) {
+			wait = es.wait(function(err, contents) {
 				through.write(scope.process(contents).css);
 				through.end();
 			});
